@@ -19,8 +19,9 @@ use Filament\Tables\Columns\TextColumn;
 class UserResource extends Resource
 {
     protected static ?string $model = User::class;
-
     protected static ?string $navigationIcon = 'heroicon-o-users';
+    protected static ?string $navigationGroup = 'Administração';
+    protected static ?string $navigationLabel = 'Usuários';
 
     public static function form(Form $form): Form
     {
@@ -55,16 +56,10 @@ class UserResource extends Resource
                 TextColumn::make('email')
                 ->label('E-mail'),
 
-                TextColumn::make('role')
-                ->label('Grupo'),
-
                 TextColumn::make('created_at')
                 ->dateTime('d/m/Y H:i:s')
                 ->label('Data criação'),
 
-                TextColumn::make('updated_at')
-                ->dateTime('d/m/Y H:i:s')
-                ->label('Data Edição'),
             ])
             ->filters([
                 //
@@ -73,23 +68,30 @@ class UserResource extends Resource
                 Tables\Actions\EditAction::make()
                 ->label('Editar'),
                 Tables\Actions\DeleteAction::make()
-                ->label('Excluir'), 
-            ])
-            ->bulkActions([
-                Tables\Actions\BulkActionGroup::make([
-                    Tables\Actions\DeleteBulkAction::make()
-                    ->label('Excluir usuário'),
-                ]),
+                ->label('Excluir'),
+                Tables\Actions\ViewAction::make()
+                    ->form([
+                        TextInput::make('name')
+                            ->label('Nome completo')
+                            ->required()
+                            ->maxLength(255),
+
+                        TextInput::make('email')
+                            ->label('E-mail'),
+
+                        TextInput::make('created_at')
+                            ->label('Data criação'),
+                    ]),
             ]);
     }
-    
+
     public static function getRelations(): array
     {
         return [
             //
         ];
     }
-    
+
     public static function getPages(): array
     {
         return [
@@ -97,5 +99,5 @@ class UserResource extends Resource
             'create' => Pages\CreateUser::route('/create'),
             'edit' => Pages\EditUser::route('/{record}/edit'),
         ];
-    }    
+    }
 }

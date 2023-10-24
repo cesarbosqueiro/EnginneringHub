@@ -4,9 +4,9 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Spatie\Permission\Models\Permission as ModelsCustomLicense;
+use Spatie\Permission\Models\Permission as ModelsDemandas;
 
-class CustomLicense extends ModelsCustomLicense
+class Demandas extends ModelsDemandas
 {
     use HasFactory;
 }

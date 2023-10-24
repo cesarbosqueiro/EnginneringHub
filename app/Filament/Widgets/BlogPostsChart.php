@@ -6,15 +6,17 @@ use Filament\Widgets\ChartWidget;
 
 class BlogPostsChart extends ChartWidget
 {
-    protected static ?string $heading = 'Scripts adicionados';
- 
+    protected static ?string $heading = 'Projetos concluídos.';
+    protected int | string | array $columnSpan = 'full';
     protected function getData(): array
     {
         return [
+            'md' => 10,
+            'xl' => 10,
             'datasets' => [
                 [
-                    'label' => 'Scripts',
-                    'data' => [1, 10, 5, 2, 21, 32, 45, 74, 65, 45, 77, 89],
+                    'label' => 'Projetos',
+                    'data' => [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12],
                 ],
             ],
             'labels' => ['Jan', 'Fev', 'Mar', 'Abr', 'Mai', 'Jun', 'Jul', 'Ago', 'Set', 'Out', 'Nov', 'Dez'],

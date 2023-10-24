@@ -19,6 +19,10 @@ class PermissionResource extends Resource
     protected static ?string $model = Permission::class;
 
     protected static ?string $navigationIcon = 'heroicon-o-lock-closed';
+    protected static ?string $navigationGroup = 'Administração';
+
+    protected static ?string $title = 'Permissões';
+    protected static ?string $navigationLabel = 'Permissões';
 
     public static function form(Form $form): Form
     {
@@ -47,24 +51,21 @@ class PermissionResource extends Resource
             ])
             ->actions([
                 Tables\Actions\EditAction::make()
-                ->label('Editar'), 
+                ->label('Editar'),
                 Tables\Actions\DeleteAction::make()
-                ->label('Excluir'), 
-            ])
-            ->bulkActions([
-                Tables\Actions\BulkActionGroup::make([
-                    Tables\Actions\DeleteBulkAction::make(),
-                ]),
+                ->label('Excluir'),
+                Tables\Actions\ViewAction::make()
+                    ->label('Visualizar'),
             ]);
     }
-    
+
     public static function getRelations(): array
     {
         return [
             //
         ];
     }
-    
+
     public static function getPages(): array
     {
         return [
@@ -72,5 +73,5 @@ class PermissionResource extends Resource
             'create' => Pages\CreatePermission::route('/create'),
             'edit' => Pages\EditPermission::route('/{record}/edit'),
         ];
-    }    
+    }
 }

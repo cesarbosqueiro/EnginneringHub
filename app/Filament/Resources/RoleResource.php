@@ -19,6 +19,9 @@ class RoleResource extends Resource
     protected static ?string $model = Role::class;
 
     protected static ?string $navigationIcon = 'heroicon-o-user-group';
+    protected static ?string $navigationGroup = 'Administração';
+
+    protected static ?string $navigationLabel = 'Grupos';
 
     public static function form(Form $form): Form
     {
@@ -27,7 +30,7 @@ class RoleResource extends Resource
                 Forms\Components\TextInput::make('name')
                     ->required()
                     ->maxLength(255),
-                
+
                 Select::make('permissions')
                 ->multiple()
                 ->relationship('permissions', 'name')
@@ -53,22 +56,19 @@ class RoleResource extends Resource
                 Tables\Actions\EditAction::make()
                 ->label('Editar'),
                 Tables\Actions\DeleteAction::make()
-                ->label('Excluir'),               
-            ])
-            ->bulkActions([
-                Tables\Actions\BulkActionGroup::make([
-                    Tables\Actions\DeleteBulkAction::make(),
-                ]),
+                ->label('Excluir'),
+                Tables\Actions\ViewAction::make()
+                    ->label('Visualizar'),
             ]);
     }
-    
+
     public static function getRelations(): array
     {
         return [
             //
         ];
     }
-    
+
     public static function getPages(): array
     {
         return [
@@ -76,5 +76,5 @@ class RoleResource extends Resource
             'create' => Pages\CreateRole::route('/create'),
             'edit' => Pages\EditRole::route('/{record}/edit'),
         ];
-    }    
+    }
 }

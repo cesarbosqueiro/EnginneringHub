@@ -2,9 +2,9 @@
 
 namespace App\Filament\Resources;
 
-use App\Filament\Resources\CustomLicenseResource\Pages;
-use App\Filament\Resources\CustomLicenseResource\RelationManagers;
-use App\Models\CustomLicense;
+use App\Filament\Resources\DemandasResource\Pages;
+use App\Filament\Resources\DemandasResource\RelationManagers;
+use App\Models\Demandas;
 use Filament\Forms;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
@@ -13,9 +13,9 @@ use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 
-class CustomLicenseResource extends Resource
+class DemandasResource extends Resource
 {
-    protected static ?string $model = CustomLicense::class;
+    protected static ?string $model = Demandas::class;
 
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
 
@@ -37,6 +37,7 @@ class CustomLicenseResource extends Resource
                 //
             ])
             ->actions([
+                Tables\Actions\ViewAction::make(),
                 Tables\Actions\EditAction::make(),
             ])
             ->bulkActions([
@@ -56,9 +57,10 @@ class CustomLicenseResource extends Resource
     public static function getPages(): array
     {
         return [
-            'index' => Pages\ListCustomLicenses::route('/'),
-            'create' => Pages\CreateCustomLicense::route('/create'),
-            'edit' => Pages\EditCustomLicense::route('/{record}/edit'),
+            'index' => Pages\ListDemandas::route('/'),
+            'create' => Pages\CreateDemandas::route('/create'),
+            'view' => Pages\ViewDemandas::route('/{record}'),
+            'edit' => Pages\EditDemandas::route('/{record}/edit'),
         ];
     }    
 }
