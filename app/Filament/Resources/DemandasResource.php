@@ -6,6 +6,7 @@ use App\Filament\Resources\DemandasResource\Pages;
 use App\Filament\Resources\DemandasResource\RelationManagers;
 use App\Models\Demandas;
 use Filament\Forms;
+use Filament\Forms\Components\TextInput;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
@@ -39,21 +40,29 @@ class DemandasResource extends Resource
             ->actions([
                 Tables\Actions\ViewAction::make(),
                 Tables\Actions\EditAction::make(),
-            ])
-            ->bulkActions([
-                Tables\Actions\BulkActionGroup::make([
-                    Tables\Actions\DeleteBulkAction::make(),
-                ]),
+                Tables\Actions\DeleteAction::make()
+                    ->form([
+                        TextInput::make('name')
+                            ->label('Nome completo')
+                            ->required()
+                            ->maxLength(255),
+
+                        TextInput::make('email')
+                            ->label('E-mail'),
+
+                        TextInput::make('created_at')
+                            ->label('Data criação'),
+                    ]),
             ]);
     }
-    
+
     public static function getRelations(): array
     {
         return [
             //
         ];
     }
-    
+
     public static function getPages(): array
     {
         return [
@@ -62,5 +71,5 @@ class DemandasResource extends Resource
             'view' => Pages\ViewDemandas::route('/{record}'),
             'edit' => Pages\EditDemandas::route('/{record}/edit'),
         ];
-    }    
+    }
 }
