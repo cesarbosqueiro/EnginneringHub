@@ -18,8 +18,9 @@ class DemandasResource extends Resource
 {
     protected static ?string $model = Demandas::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
-
+    protected static ?string $navigationIcon = 'heroicon-o-clipboard-document-list';
+    protected static ?string $navigationGroup = 'Interno';
+    protected static ?string $navigationLabel = 'Demandas';
     public static function form(Form $form): Form
     {
         return $form

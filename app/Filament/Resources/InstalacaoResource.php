@@ -17,8 +17,9 @@ class InstalacaoResource extends Resource
 {
     protected static ?string $model = Instalacao::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
-
+    protected static ?string $navigationIcon = 'heroicon-o-server-stack';
+    protected static ?string $navigationGroup = 'Interno';
+    protected static ?string $navigationLabel = 'Instalação';
     public static function form(Form $form): Form
     {
         return $form

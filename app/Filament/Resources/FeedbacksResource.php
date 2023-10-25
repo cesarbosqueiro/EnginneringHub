@@ -17,8 +17,9 @@ class FeedbacksResource extends Resource
 {
     protected static ?string $model = Feedbacks::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
-
+    protected static ?string $navigationIcon = 'heroicon-o-chat-bubble-oval-left-ellipsis';
+    protected static ?string $navigationGroup = 'Interno';
+    protected static ?string $navigationLabel = 'Feedbacks';
     public static function form(Form $form): Form
     {
         return $form
@@ -45,14 +46,14 @@ class FeedbacksResource extends Resource
                 ]),
             ]);
     }
-    
+
     public static function getRelations(): array
     {
         return [
             //
         ];
     }
-    
+
     public static function getPages(): array
     {
         return [
@@ -60,5 +61,5 @@ class FeedbacksResource extends Resource
             'create' => Pages\CreateFeedbacks::route('/create'),
             'edit' => Pages\EditFeedbacks::route('/{record}/edit'),
         ];
-    }    
+    }
 }

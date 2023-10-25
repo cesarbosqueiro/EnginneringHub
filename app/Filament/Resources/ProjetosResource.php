@@ -17,8 +17,9 @@ class ProjetosResource extends Resource
 {
     protected static ?string $model = Projetos::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
-
+    protected static ?string $navigationIcon = 'heroicon-o-building-office-2';
+    protected static ?string $navigationGroup = 'Interno';
+    protected static ?string $navigationLabel = 'Projetos';
     public static function form(Form $form): Form
     {
         return $form
@@ -45,14 +46,14 @@ class ProjetosResource extends Resource
                 ]),
             ]);
     }
-    
+
     public static function getRelations(): array
     {
         return [
             //
         ];
     }
-    
+
     public static function getPages(): array
     {
         return [
@@ -60,5 +61,5 @@ class ProjetosResource extends Resource
             'create' => Pages\CreateProjetos::route('/create'),
             'edit' => Pages\EditProjetos::route('/{record}/edit'),
         ];
-    }    
+    }
 }

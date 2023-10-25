@@ -17,8 +17,9 @@ class IntegracaoResource extends Resource
 {
     protected static ?string $model = Integracao::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
-
+    protected static ?string $navigationIcon = 'heroicon-o-circle-stack';
+    protected static ?string $navigationGroup = 'Interno';
+    protected static ?string $navigationLabel = 'Integração';
     public static function form(Form $form): Form
     {
         return $form

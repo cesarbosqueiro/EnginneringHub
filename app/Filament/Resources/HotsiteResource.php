@@ -17,8 +17,9 @@ class HotsiteResource extends Resource
 {
     protected static ?string $model = Hotsite::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
-
+    protected static ?string $navigationIcon = 'heroicon-o-globe-alt';
+    protected static ?string $navigationGroup = 'Interno';
+    protected static ?string $navigationLabel = 'Hotsite';
     public static function form(Form $form): Form
     {
         return $form
@@ -45,14 +46,14 @@ class HotsiteResource extends Resource
                 ]),
             ]);
     }
-    
+
     public static function getRelations(): array
     {
         return [
             //
         ];
     }
-    
+
     public static function getPages(): array
     {
         return [
@@ -60,5 +61,5 @@ class HotsiteResource extends Resource
             'create' => Pages\CreateHotsite::route('/create'),
             'edit' => Pages\EditHotsite::route('/{record}/edit'),
         ];
-    }    
+    }
 }
