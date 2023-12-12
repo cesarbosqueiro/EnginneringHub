@@ -40,7 +40,6 @@ class DemandasResource extends Resource
             ])
             ->actions([
                 Tables\Actions\ViewAction::make(),
-                Tables\Actions\EditAction::make(),
                 Tables\Actions\DeleteAction::make()
                     ->form([
                         TextInput::make('name')
