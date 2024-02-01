@@ -4,7 +4,7 @@ namespace App\Filament\Resources;
 
 use Filament\Forms\Components\Select;
 use App\Filament\Resources\PermissionResource\Pages;
-use App\Filament\Resources\PermissionResource\RelationManagers;
+//use App\Filament\Resources\PermissionResource\RelationManagers;
 use App\Models\Permission;
 use Filament\Forms;
 use Filament\Forms\Form;
@@ -14,7 +14,7 @@ use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 
-class PermissionResource extends Resource
+class ermissionResource extends Resource
 {
     protected static ?string $model = Permission::class;
 

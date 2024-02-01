@@ -1,30 +1,61 @@
 <?php
-
 namespace App\Filament\Widgets;
 
-use Filament\Widgets\ChartWidget;
+use Leandrocfe\FilamentApexCharts\Widgets\ApexChartWidget;
 
-class BlogPostsChart extends ChartWidget
+class BlogPostsChart extends ApexChartWidget
 {
-    protected static ?string $heading = 'Projetos concluídos.';
-    protected int | string | array $columnSpan = 'full';
-    protected function getData(): array
+    /**
+     * Chart Id
+     *
+     * @var string
+     */
+    protected static ?string $chartId = 'blogPostsChart';
+
+    /**
+     * Widget Title
+     *
+     * @var string|null
+     */
+    protected static ?string $heading = 'Projetos';
+
+    /**
+     * Widget Footer
+     *
+     * @var string|null
+     */
+    protected static ?string $footer = 'Vapo';
+
+    protected function getOptions(): array
     {
         return [
-            'md' => 10,
-            'xl' => 10,
-            'datasets' => [
+            'chart' => [
+                'type' => 'bar',
+                'height' => 600, // Altura ajustada para 600
+            ],
+            'series' => [
                 [
-                    'label' => 'Projetos',
-                    'data' => [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12],
+                    'name' => 'Projetos',
+                    'data' => [7, 4, 6, 10, 14, 7, 5, 9, 10, 15, 13, 18],
                 ],
             ],
-            'labels' => ['Jan', 'Fev', 'Mar', 'Abr', 'Mai', 'Jun', 'Jul', 'Ago', 'Set', 'Out', 'Nov', 'Dez'],
+            'xaxis' => [
+                'categories' => ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+                'labels' => [
+                    'style' => [
+                        'fontFamily' => 'inherit',
+                        'fontWeight' => 600,
+                    ],
+                ],
+            ],
+            'yaxis' => [
+                'labels' => [
+                    'style' => [
+                        'fontFamily' => 'inherit',
+                    ],
+                ],
+            ],
+            'colors' => ['#f59e0b'],
         ];
-    }
-
-    protected function getType(): string
-    {
-        return 'bar';
     }
 }

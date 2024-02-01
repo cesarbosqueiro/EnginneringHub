@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Filament\Models\Contracts\FilamentUser;
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
+use Filament\Panel;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
@@ -24,6 +25,7 @@ class User extends Authenticatable implements FilamentUser
         'name',
         'email',
         'password',
+        'status',
     ];
 
     /**
@@ -45,9 +47,9 @@ class User extends Authenticatable implements FilamentUser
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
     ];
-    
-    public function canAccessPanel(): bool
+
+    public function canAccessPanel(Panel $panel): bool
     {
-        return $this->hasRole(['Administrador', 'Manager', 'Suporte', 'Gerente', 'Engenharia']);
+        return true; // ou false, dependendo da lógica que você precisa implementar
     }
 }
